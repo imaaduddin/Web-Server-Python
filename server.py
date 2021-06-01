@@ -1,12 +1,12 @@
+from os import name
 from flask import Flask, render_template, url_for
 
 app = Flask(__name__)
 print(__name__)
 
-@app.route("/")
-def hello_world():
-  print(url_for("static", filename="spade.ico"))
-  return render_template("index.htm")
+@app.route("/<username>/<int:post_id>")
+def hello_world(username=None, post_id=None):
+  return render_template("index.htm", name=username, post_id=post_id)
 
 @app.route("/about.htm")
 def about():
